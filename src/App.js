@@ -28,17 +28,17 @@ class App extends Component {
        }); 
     }
     handleSubmit = (e) =>{
-        e.preventDefault();
-        let createParagraph = document.createElement('p');
-        createParagraph.textContent = `Email:${this.state.name}`
         
+        let createParagraph = document.createElement('p');
+        createParagraph.textContent = `Name:${this.state.name}`
+        e.preventDefault();
     } 
     render(){
         const {name, number, email} = this.state;
         return(
             <div>
                 <h1>Personal Information </h1>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor="Name">Name: </label>
                     <input
                     type="text"
@@ -58,7 +58,7 @@ class App extends Component {
                     value={email}
                     onChange={this.handleEmailChange}
                         />
-                    <button type="submit" onClick={this.handleSubmit}>Submit </button>
+                    <button type="submit" onClick>Submit </button>
                 </form>
                 <EducationalExperience />
                 <RecentExperience />
