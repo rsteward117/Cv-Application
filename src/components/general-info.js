@@ -50,7 +50,7 @@ class GeneralInformation extends Component{
                 <button type="button" onClick={this.handleEdit}> Edit </button>
             </div>
         ) : (
-            <div className = "general-info-container">
+            <div>
                 <h1>Personal Information </h1>
                 <form>
                     <label htmlFor="Name">Name: </label>
