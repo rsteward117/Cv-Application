@@ -1,0 +1,18 @@
+body{
+    background-color: aliceblue;
+}
+label {
+    white-space: pre;
+}
+input{
+    border-radius: 20px;
+    color: black;
+    background-color: lightgrey;
+    font-size: 15px;
+}
+h1{
+    text-decoration: underline;
+}
+button{
+    border-radius: 20px;
+}

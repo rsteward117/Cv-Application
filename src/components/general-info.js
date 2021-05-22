@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
+import './componetsStyles.css'
 class GeneralInformation extends Component{
     constructor(){
         super()
         this.state={
             name: '',
             number: '',
-            email: ''
+            email: '',
+            submit: false,
         }
     }
     handleNameChange = (e) =>{
@@ -24,37 +26,60 @@ class GeneralInformation extends Component{
        }); 
     }
     handleSubmit = (e) =>{
-        
-        let createParagraph = document.createElement('p');
-        createParagraph.textContent = `Name:${this.state.name}`
         e.preventDefault();
-    } 
+        this.setState({
+            submit: !this.state.submit,
+        })
+    }
+    handleEdit = (e) =>{
+        e.preventDefault();
+        this.setState({
+            submit: false,
+        })
+    }
     render(){
         const {name, number, email} = this.state;
-        return(
+        
+        
+        return this.state.submit ? (
             <div>
                 <h1>Personal Information </h1>
-                <form onSubmit={this.handleSubmit}>
+                <p>{name}</p>
+                <p>{number}</p>
+                <p>{email}</p>
+                <button type="button" onClick={this.handleEdit}> Edit </button>
+            </div>
+        ) : (
+            <div className = "general-info-container">
+                <h1>Personal Information </h1>
+                <form>
                     <label htmlFor="Name">Name: </label>
+                    <br />
                     <input
                     type="text"
                     value={name}
                     onChange={this.handleNameChange}
                         />
+                    <br />
                     <label htmlFor="Number">Phone Number: </label>
+                    <br />
                     <input
                     type="tel"
-                    pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+                    pattern="[1]{1}[0-9]{3}[0-9]{3}[0-9]{4}"
                     value={number}
                     onChange={this.handleNumberChange}
                         />
+                    <br />
                     <label htmlFor="Email">Email Address: </label>
+                    <br />
                     <input
                     type="email"
                     value={email}
                     onChange={this.handleEmailChange}
                         />
-                    <button type="submit" onClick>Submit </button>
+                    <br />
+                    <br />
+                    <button type="submit" onClick={this.handleSubmit}>Submit </button>
                 </form>
             </div>
             )
